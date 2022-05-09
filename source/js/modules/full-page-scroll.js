@@ -11,12 +11,12 @@ export default class FullPageScroll {
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
-    this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this.onUrlHashChangedHandler = this.onUrlHashChanged.bind(this);
   }
 
   init() {
     document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT, {trailing: true}));
-    window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
+    window.addEventListener(`popstate`, this.onUrlHashChangedHandler);
 
     this.onUrlHashChanged();
   }
