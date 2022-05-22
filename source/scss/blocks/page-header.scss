@@ -1,10 +1,12 @@
 .page-header {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -50px;
   right: 0;
   padding: 2.7rem 0;
   z-index: 10;
+
+  transition: left 1s cubic-bezier(.5,0,.01,.85);
 
   @media (min-width: $stop-scaling) {
     padding: 27px 0;
@@ -24,6 +26,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  opacity: 0;
+
+  transition: opacity 2s cubic-bezier(.5,0,.01,.85);
 }
 
 .page-header__logo {
@@ -246,11 +251,13 @@
       content: "";
       position: absolute;
       bottom: 0;
-      width: 100%;
+      width: 0;
       height: 2px;
       background-color: $c-light;
-      display: none;
+      opacity: 0;
       left: 0;
+
+      transition: all 0.5s ease-in-out;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
@@ -267,7 +274,10 @@
 
     &.active {
       &::after {
-        display: block;
+        opacity: 0;
+        width: 0;
+
+        transition: all 1.5s cubic-bezier(.5,0,.01,.85);
       }
     }
 
@@ -279,6 +289,7 @@
       &::after {
         opacity: 1;
         background-color: $c-purple;
+        width: 100%;
       }
     }
   }
@@ -299,5 +310,22 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+.page-is-loaded {
+  .page-header {
+    inset: 0;
+  }
+
+  .page-header__wrapper {
+    opacity: 1;
+  }
+
+  .page-header__menu {
+    .active::after {
+        opacity: 1;
+        width: 100%;
+    }
   }
 }
