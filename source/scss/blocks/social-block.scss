@@ -1,11 +1,23 @@
 .social-block {
   position: relative;
-
   &:hover {
     .social-block__list {
-      opacity: 1;
       pointer-events: auto;
+
+      > li {
+        opacity: 1;
+        &:nth-child(1) {
+          transition-duration: 0.5s;
+        }
+        &:nth-child(2) {
+          transition-duration: 1s;
+        }
+        &:nth-child(3) {
+          transition-duration: 1.5s;
+        }
+      }
     }
+
   }
 }
 
@@ -92,6 +104,11 @@
   margin-top: 1.5rem;
   opacity: 0;
   pointer-events: none;
+
+  > li {
+    opacity: 0;
+    transition: opacity ease-in-out;
+  }
 
   @media (min-width: $stop-scaling) {
     margin-top: 15px;
