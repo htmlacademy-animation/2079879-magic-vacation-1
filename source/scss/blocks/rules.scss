@@ -1,3 +1,51 @@
+@keyframes appearing-text {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appearing-bullet {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  70% {
+    transform: scale(1.2);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sequencing-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appearing-button {
+  from {
+    opacity: 0;
+    width: 0;
+    z-index: 10;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .rules {
   position: relative;
   flex-grow: 1;
@@ -20,6 +68,12 @@
 
   @media (max-width: $mobile) and (orientation: landscape) {
     padding: 4rem 0 4rem;
+  }
+
+  a {
+    &::before {
+      animation: appearing-button 1s 1s backwards;
+    }
   }
 }
 
@@ -115,6 +169,55 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     column-gap: 4rem;
   }
+
+  li {
+    animation: sequencing-appear 1s;
+
+    &::before {
+      animation: appearing-bullet 1s ease-out backwards;
+    }
+
+    p {
+      animation: appearing-text 1s backwards;
+    }
+  }
+
+  li:nth-child(2) {
+    animation-delay: 0.3s;
+
+    &::before {
+      animation-delay: 0.3s;
+    }
+
+    p {
+      animation-delay: 0.3s;
+    }
+  }
+
+  li:nth-child(3) {
+    animation-delay: 0.6s;
+
+    &::before {
+     animation-delay: 0.6s;
+    }
+
+    p {
+      animation-delay: 0.6s;
+    }
+  }
+
+  li:nth-child(4) {
+    animation-delay: 0.9s;
+
+    &::before {
+     animation-delay: 0.9s;
+    }
+
+    p {
+      animation-delay: 0.9s;
+    }
+  }
+
 }
 
 .rules__item {
