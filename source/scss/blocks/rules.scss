@@ -182,42 +182,17 @@
     }
   }
 
-  li:nth-child(2) {
-    animation-delay: 0.3s;
-
-    &::before {
-      animation-delay: 0.3s;
-    }
-
-    p {
-      animation-delay: 0.3s;
+  @for $i from 1 through 4 {
+    li:nth-child(#{$i})::before {
+      animation-delay: (300ms * $i);
     }
   }
 
-  li:nth-child(3) {
-    animation-delay: 0.6s;
-
-    &::before {
-     animation-delay: 0.6s;
-    }
-
-    p {
-      animation-delay: 0.6s;
+  @for $i from 1 through 4 {
+    li:nth-child(#{$i}) p {
+      animation-delay: (300ms * $i);
     }
   }
-
-  li:nth-child(4) {
-    animation-delay: 0.9s;
-
-    &::before {
-     animation-delay: 0.9s;
-    }
-
-    p {
-      animation-delay: 0.9s;
-    }
-  }
-
 }
 
 .rules__item {
